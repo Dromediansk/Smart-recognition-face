@@ -1,5 +1,7 @@
 # Smart Recognition Face - v1
 
+This app will detect human face on imported image.
+
 1. Clone this repo
 2. Run `npm install`
 3. Run `npm start`
