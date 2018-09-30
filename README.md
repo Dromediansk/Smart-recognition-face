@@ -4,4 +4,4 @@
 - App is great template for creating similar projects
 - User can register, sign in and increase his rank
 - Frontend is using Html, CSS and React
-- Fully connected with backend deployed via Heroku
+- Fully connected with backend (repository: Smart-recognition-face-api)
