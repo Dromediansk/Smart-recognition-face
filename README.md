@@ -1,7 +1,11 @@
-# Smart Recognition Face - v1
+# SmartBrain-api - v2
+Final project for Udemy course
 
-- This app will detect human face on imported image using Clarifai API.
-- App is great template for creating similar projects
-- User can register, sign in and increase his rank
-- Frontend is using Html, CSS and React
-- Fully connected with backend (repository: Smart-recognition-face-api)
+1. Clone this repo
+2. Run `npm install`
+3. Run `npm start`
+4. You must add your own API key in the `controllers/image.js` file to connect to Clarifai API.
+
+You can grab Clarifai API key [here](https://www.clarifai.com/)
+
+** Make sure you use postgreSQL instead of mySQL for this code base.
