@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Helmet} from "react-helmet";
 import Particles from 'react-particles-js';
 import Navigation from './components/Navigation/Navigation';
 import Signin from './components/Signin/Signin';
@@ -116,6 +117,9 @@ class App extends Component {
     const { isSignedIn, imageUrl, route, box} = this.state;
     return (
       <div className="App">
+          <Helmet>
+            <title>Smart Recognition Face</title>
+          </Helmet>
           <Particles className='particles'
               params={particlesOptions}
           />
