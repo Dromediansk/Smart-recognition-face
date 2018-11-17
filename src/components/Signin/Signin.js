@@ -67,7 +67,7 @@ class Signin extends React.Component {
 			    <div className="">
 			      <input
 			      	onClick={this.onSubmitSignIn}
-			      	className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign in"
+			      	className="z-1 b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign in"
 			      	/>
 			    </div>
 			    <p className='f6'>or</p>

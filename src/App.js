@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Helmet} from "react-helmet";
 import Particles from 'react-particles-js';
 import Navigation from './components/Navigation/Navigation';
 import Signin from './components/Signin/Signin';
@@ -85,7 +84,7 @@ class App extends Component {
         })
     .then(response => response.json())
     .then(response => {
-      if (response) {
+      if (response.outputs[0].data.regions) {
         fetch('https://fast-beyond-22593.herokuapp.com/image', {
           method: 'put',
           headers: {'Content-Type': 'application/json'},
@@ -102,6 +101,7 @@ class App extends Component {
       this.displayFaceBox(this.calculateFaceLocation(response))
       })
     .catch(err => console.log(err));
+    this.setState({box: ''});
   }
 
   onRouteChange = (route) => {
@@ -117,15 +117,12 @@ class App extends Component {
     const { isSignedIn, imageUrl, route, box} = this.state;
     return (
       <div className="App">
-          <Helmet>
-            <title>Smart Recognition Face</title>
-          </Helmet>
           <Particles className='particles'
               params={particlesOptions}
           />
           <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
-          {route === 'home'
-              ? <div>
+          {route === 'home' ?
+                <div>
                   <Logo />
                   <Rank name={this.state.user.name} entries={this.state.user.entries}/>
                   <ImageLinkForm
