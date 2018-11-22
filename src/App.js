@@ -84,7 +84,7 @@ class App extends Component {
         })
     .then(response => response.json())
     .then(response => {
-      if (response.outputs[0].data.regions) {
+      if (response) {
         fetch('https://fast-beyond-22593.herokuapp.com/image', {
           method: 'put',
           headers: {'Content-Type': 'application/json'},
@@ -101,7 +101,6 @@ class App extends Component {
       this.displayFaceBox(this.calculateFaceLocation(response))
       })
     .catch(err => console.log(err));
-    this.setState({box: ''});
   }
 
   onRouteChange = (route) => {
