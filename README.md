@@ -1,7 +1,8 @@
 # Smart Recognition Face - v1
 
-- This app will detect human face on imported image using Clarifai API.
-- App is great template for creating similar projects
-- User can register, sign in and increase his rank
-- Frontend is using Html, CSS and React
-- Fully connected with backend (repository: Smart-recognition-face-api)
+## Introduction
+
+App detects human face of imported image. Project is built with ReactJS on frontend, NodeJS on backend and PostresSQL on user database. User can register, sign in and increase his rank.
+
+Backend repository can be found [here.](https://github.com/Dromediansk/Smart-recognition-face-api)
+
