@@ -7,6 +7,8 @@ import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
+import Modal from './components/Modal/Modal';
+import Profile from './components/Profile/Profile';
 import './App.css';
 
 const particlesOptions = {
@@ -25,8 +27,9 @@ const initialState = {
       input: '',
       imageUrl: '',
       boxes: [],
-      route: 'signin',
-      isSignedIn: false,
+      route: 'home',
+      isSignedIn: true,
+      isProfileOpen: false,
       user: {
         id: '',
         name: '',
@@ -77,7 +80,7 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
-    fetch('https://immense-inlet-60412.herokuapp.com/imageurl', {
+    fetch('http://localhost:3000/imageurl', {
           method: 'post',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
@@ -87,7 +90,7 @@ class App extends Component {
     .then(response => response.json())
     .then(response => {
       if (response) {
-        fetch('https://immense-inlet-60412.herokuapp.com/image', {
+        fetch('http://localhost:3000/image', {
           method: 'put',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
@@ -107,22 +110,39 @@ class App extends Component {
 
   onRouteChange = (route) => {
     if(route ==='signout') {
-      this.setState(initialState)
+      return this.setState(initialState)
     } else if (route === 'home') {
       this.setState({isSignedIn: true})
     }
     this.setState({route: route});
   }
 
+  toggleModal = () => {
+    this.setState(prevState => ({
+      ...prevState,
+      isProfileOpen: !prevState.isProfileOpen
+    }));
+  }
+
   render() {
-    const { isSignedIn, imageUrl, route, boxes} = this.state;
+    const { isSignedIn, imageUrl, route, boxes, isProfileOpen } = this.state;
     return (
       <div className="App">
           <Particles className='particles'
               params={particlesOptions}
           />
-          <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
-          {route === 'home' ?
+          <Navigation 
+            isSignedIn={isSignedIn} 
+            onRouteChange={this.onRouteChange}
+            toggleModal={this.toggleModal} />
+          { isProfileOpen && 
+            <Modal>
+              <Profile 
+                isProfileOpen={isProfileOpen} 
+                toggleModal={this.toggleModal} />
+            </Modal> 
+          }
+          { route === 'home' ?
                 <div>
                   <Logo />
                   <Rank name={this.state.user.name} entries={this.state.user.entries}/>
