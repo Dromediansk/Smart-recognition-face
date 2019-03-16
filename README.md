@@ -2,7 +2,7 @@
 
 ## Introduction
 
-App detects human face of imported image url. User can register, sign in and increase his rank.
+App detects human face of imported image url. User can register, sign in, change his data and increase his rank.
 
 Backend repository can be found [here.](https://github.com/Dromediansk/Smart-recognition-face-api)
 
