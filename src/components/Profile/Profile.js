@@ -12,7 +12,7 @@ class Profile extends React.Component {
     }
 
     onFormChange = (event) => {
-        switch(event.target.name) {
+        switch(event.target.name || event.target.age || event.target.pet) {
             case 'user-name':
                 this.setState({ name: event.target.value })
                 break;
